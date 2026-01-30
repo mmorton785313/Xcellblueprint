@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Awaken & Reign Identity Blueprint</title>
+  <meta name="description" content="Identity clarity, clarity mapping, and ongoing coaching." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js"></script>
+</head>
+<body>
+  <main class="hero">
+    <div class="card">
+      <div class="brand">
+        <h1 id="brandTitle">Awaken & Reign Identity Blueprint</h1>
+        <p class="small">Identity clarity • practical or spiritual lens • results-first</p>
+      </div>
+
+      <div class="grid">
+
+        <details>
+          <summary>Who I Am</summary>
+          <p id="whoIAmText"></p>
+        </details>
+
+        <section class="panel service">
+          <div class="left">
+            <h2>Identity Reading</h2>
+            <p>Your identity, gifts, and purpose.</p>
+          </div>
+          <div class="btnRow">
+            <button class="primary" id="btnIdentity">Request Identity Reading</button>
+            <button class="secondary" id="btnEmail">Email Me</button>
+          </div>
+        </section>
+
+        <section class="panel service">
+          <div class="left">
+            <h2>Clarity Mapping</h2>
+            <p>Your current situation and goals.</p>
+          </div>
+          <div class="btnRow">
+            <button class="secondary" disabled title="Coming soon">Coming Soon</button>
+          </div>
+        </section>
+
+        <section class="panel service">
+          <div class="left">
+            <h2>Ongoing Coaching</h2>
+            <p>Direction and career path.</p>
+          </div>
+          <div class="btnRow">
+            <button class="secondary" disabled title="Coming soon">Coming Soon</button>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="footer">
+        <div id="footerLine"></div>
+      </div>
+    </div>
+
+    <dialog id="payModal">
+      <div class="modal">
+        <h3>Identity Reading — Payment + Email</h3>
+        <p><b>Price:</b> $<span id="price"></span></p>
+
+        <p class="small">Step 1: Send the payment. Step 2: Send your email. After I confirm payment, I’ll email you the intake form link.</p>
+
+        <div class="box" id="payBox"></div>
+
+        <label class="label" for="clientEmail">Your email (so I can send the intake form):</label>
+        <input id="clientEmail" type="email" placeholder="you@example.com" autocomplete="email" />
+
+        <div class="modalActions">
+          <button class="secondary" id="copyEmail">Copy My Email</button>
+          <button class="secondary" id="openCashApp">Open Cash App</button>
+          <button class="primary" id="sendEmail">Send Payment Confirmation</button>
+          <button class="secondary" id="closeModal">Close</button>
+        </div>
+
+        <p class="small" style="margin-top:14px;opacity:.8">
+          Heads up: I work in batches. Once payment is confirmed, you can expect your read within 24 hours (often sooner).
+        </p>
+      </div>
+    </dialog>
+
+  </main>
+
+<script>
+(function(){
+  const cfg = window.SITE_CONFIG || {};
+  document.getElementById('brandTitle').textContent = cfg.brand || 'Awaken & Reign Identity Blueprint';
+  document.getElementById('whoIAmText').textContent = cfg.whoIAmText || '';
+  document.getElementById('footerLine').textContent = `Contact: ${cfg.handle || ''}`;
+
+  const payModal = document.getElementById('payModal');
+  const priceEl = document.getElementById('price');
+  const payBox = document.getElementById('payBox');
+  const clientEmail = document.getElementById('clientEmail');
+
+  function openModal(){
+    priceEl.textContent = cfg.price || 100;
+    payBox.textContent =
+`Cash App: ${cfg.cashApp}
+
+Send: $${cfg.price}
+
+In the Cash App note, include:
+- your full name
+- your email`;
+    payModal.showModal();
+  }
+
+  document.getElementById('btnIdentity').addEventListener('click', openModal);
+
+  document.getElementById('closeModal').addEventListener('click', ()=>payModal.close());
+
+  document.getElementById('btnEmail').addEventListener('click', ()=>{
+    const subj = encodeURIComponent(cfg.brand + " — Question");
+    const body = encodeURIComponent("Peace — I’m interested in working with you.\n\nName:\nEmail:\nWhat are you looking for?\n");
+    window.location.href = `mailto:${cfg.handle}?subject=${subj}&body=${body}`;
+  });
+
+  document.getElementById('copyEmail').addEventListener('click', async ()=>{
+    try{
+      await navigator.clipboard.writeText(cfg.handle);
+      alert("Copied: " + cfg.handle);
+    }catch(e){
+      prompt("Copy this:", cfg.handle);
+    }
+  });
+
+  document.getElementById('openCashApp').addEventListener('click', ()=>{
+    // Works on mobile if Cash App is installed; otherwise opens web
+    const cashTag = (cfg.cashApp || "").replace("$","");
+    const amount = cfg.price || 100;
+    window.open(`https://cash.app/$${cashTag}/${amount}`, "_blank");
+  });
+
+  document.getElementById('sendEmail').addEventListener('click', ()=>{
+    const email = (clientEmail.value || "").trim();
+    if(!email){
+      alert("Drop your email so I can send the intake form after payment is confirmed.");
+      clientEmail.focus();
+      return;
+    }
+    const subj = encodeURIComponent(cfg.brand + " — Payment Sent");
+    const body = encodeURIComponent(
+`I just sent the $${cfg.price} payment via Cash App.\n\nMy name: \nMy email: ${email}\n\nPlease send the intake form link when you confirm payment.`
+    );
+    window.location.href = `mailto:${cfg.handle}?subject=${subj}&body=${body}`;
+  });
+
+})();
+</script>
+</body>
+</html>
