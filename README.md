@@ -1,1 +1,1 @@
-Final divider update: image-only visual journey with luxury gold dividers between sections and one final CTA.
+Update: removed top Awaken/Reign Begin bar and scaled down the soul section.
