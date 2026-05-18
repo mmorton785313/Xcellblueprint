@@ -1,1 +1,1 @@
-Awaken & Reign Studios flow update. Upload index.html, styles.css, and the assets folder to GitHub root.
+Clean layout version: no forced fades/masks. Upload index.html, styles.css, and assets folder to GitHub root.
