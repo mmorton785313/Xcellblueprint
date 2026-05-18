@@ -1,1 +1,1 @@
-Update: removed top Awaken/Reign Begin bar and scaled down the soul section.
+Soul section fully removed. Also removed the soul image from assets folder.
