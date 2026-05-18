@@ -1,7 +1,6 @@
 *{box-sizing:border-box}
 :root{
   --bg:#030303;
-  --panel:#080706;
   --gold:#d9ab59;
   --gold2:#f3d58e;
   --text:#f7f0e6;
@@ -10,20 +9,10 @@
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  background:var(--bg);
+  background:#030303;
   color:var(--text);
   font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   overflow-x:hidden;
-}
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:5;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(217,171,89,.08),transparent 38%),
-    radial-gradient(circle at 85% 45%,rgba(116,66,180,.07),transparent 30%);
 }
 img{display:block;width:100%;height:auto}
 .topbar{
@@ -34,8 +23,8 @@ img{display:block;width:100%;height:auto}
   justify-content:space-between;
   align-items:center;
   padding:14px clamp(16px,5vw,72px);
-  background:linear-gradient(to bottom,rgba(0,0,0,.88),rgba(0,0,0,.56));
-  border-bottom:1px solid rgba(217,171,89,.12);
+  background:linear-gradient(to bottom,rgba(0,0,0,.92),rgba(0,0,0,.72));
+  border-bottom:1px solid rgba(217,171,89,.16);
   backdrop-filter:blur(10px);
 }
 .brand{
@@ -55,19 +44,15 @@ img{display:block;width:100%;height:auto}
   border-radius:999px;
 }
 main{
-  background:
-    linear-gradient(180deg,#030303 0%,#080604 30%,#030303 100%);
+  background:#030303;
 }
-.image-strip{
-  position:relative;
+.image-section{
   width:100%;
-  background:
-    linear-gradient(90deg,#020202 0%,#080604 50%,#020202 100%);
-  padding:0;
   margin:0;
+  padding:0;
+  background:#030303;
 }
-.image-strip.first{padding-top:0}
-.image-strip img{
+.image-section img{
   width:100%;
   max-width:1280px;
   margin:0 auto;
@@ -77,24 +62,37 @@ main{
 }
 .hero img{
   max-width:none;
-  min-height:72vh;
-  object-fit:cover;
-  object-position:center;
 }
-.image-strip + .image-strip{
-  border-top:1px solid rgba(217,171,89,.08);
-}
-.info-section{
-  max-width:1120px;
-  margin:0 auto;
-  padding:64px clamp(22px,6vw,88px);
+.section-divider{
+  height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   background:
-    linear-gradient(145deg,rgba(255,255,255,.045),rgba(217,171,89,.035)),
-    #070605;
+    radial-gradient(circle at center,rgba(217,171,89,.18),transparent 24%),
+    linear-gradient(to bottom,#030303 0%,#171008 48%,#030303 100%);
   border-top:1px solid rgba(217,171,89,.18);
   border-bottom:1px solid rgba(217,171,89,.12);
 }
-.info-section.compact{text-align:center}
+.section-divider span{
+  color:var(--gold2);
+  font-size:26px;
+  letter-spacing:.4em;
+  text-shadow:0 0 20px rgba(217,171,89,.45);
+}
+.quote-divider{
+  padding:54px 22px;
+  text-align:center;
+  color:var(--gold2);
+  font-family:Cinzel,serif;
+  font-size:clamp(22px,4vw,38px);
+  line-height:1.25;
+  background:
+    radial-gradient(circle at center,rgba(139,92,246,.10),transparent 28%),
+    linear-gradient(to bottom,#030303,#120b06,#030303);
+  border-top:1px solid rgba(217,171,89,.16);
+  border-bottom:1px solid rgba(217,171,89,.12);
+}
 .eyebrow{
   margin:0 0 16px;
   color:var(--gold2);
@@ -103,70 +101,17 @@ main{
   font-size:12px;
   font-weight:900;
 }
-h1,h2,h3{
-  margin:0;
-  font-family:Cinzel,serif;
-}
-.info-section h2,.testimonial-cards h2,.contact h2{
-  font-size:clamp(32px,6vw,62px);
-  line-height:1.06;
-}
-.info-section p,.contact p{
-  color:var(--muted);
-  font-size:18px;
-  line-height:1.75;
-}
-details{
-  margin-top:24px;
-  border:1px solid rgba(217,171,89,.30);
-  border-radius:18px;
-  background:rgba(0,0,0,.24);
-  overflow:hidden;
-}
-summary{
-  cursor:pointer;
-  list-style:none;
-  color:var(--gold2);
-  font-weight:900;
-  padding:18px 22px;
-}
-summary::-webkit-details-marker{display:none}
-details p{
-  margin:0;
-  padding:0 22px 18px;
-  font-size:16px!important;
-}
-.cta-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  margin-top:28px;
-}
-.button{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  min-height:48px;
-  padding:13px 24px;
-  border-radius:999px;
-  text-decoration:none;
-  font-weight:900;
-}
-.button.gold{
-  background:linear-gradient(135deg,var(--gold2),var(--gold));
-  color:#100b04;
-}
-.button.outline{
-  border:1px solid rgba(217,171,89,.70);
-  color:var(--gold2);
-  background:rgba(0,0,0,.25);
-}
+h1,h2,h3{margin:0;font-family:Cinzel,serif}
 .testimonial-cards{
   padding:82px clamp(22px,6vw,88px);
   background:#050404;
   text-align:center;
   border-top:1px solid rgba(217,171,89,.12);
   border-bottom:1px solid rgba(217,171,89,.12);
+}
+.testimonial-cards h2,.contact h2{
+  font-size:clamp(32px,6vw,62px);
+  line-height:1.06;
 }
 .cards{
   max-width:1080px;
@@ -193,8 +138,34 @@ details p{
     #030303;
 }
 .contact h2{color:var(--gold2)}
+.contact p{color:var(--muted);font-size:18px;line-height:1.75}
 .contact-copy{max-width:900px;margin:18px auto}
+.cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:28px;
+}
 .contact-buttons{justify-content:center}
+.button{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  min-height:48px;
+  padding:13px 24px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+}
+.button.gold{
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:#100b04;
+}
+.button.outline{
+  border:1px solid rgba(217,171,89,.70);
+  color:var(--gold2);
+  background:rgba(0,0,0,.25);
+}
 .contact-grid{
   max-width:1000px;
   margin:42px auto 0;
@@ -221,24 +192,9 @@ details p{
   .topbar{padding:12px 16px}
   .brand{font-size:12px}
   .top-button{padding:9px 18px}
-  .hero img{
-    min-height:0;
-    height:auto;
-    object-fit:contain;
-  }
-  .image-strip img{
-    max-width:100%;
-  }
-  .info-section{
-    padding:44px 22px;
-  }
-  .info-section h2,.testimonial-cards h2,.contact h2{
-    font-size:clamp(30px,9vw,44px);
-  }
-  .cards,.contact-grid{
-    grid-template-columns:1fr;
-  }
-  .contact{
-    padding:72px 22px;
-  }
+  .image-section img{max-width:100%}
+  .section-divider{height:62px}
+  .quote-divider{padding:38px 18px}
+  .cards,.contact-grid{grid-template-columns:1fr}
+  .contact{padding:72px 22px}
 }

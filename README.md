@@ -1,1 +1,1 @@
-Clean layout version: no forced fades/masks. Upload index.html, styles.css, and assets folder to GitHub root.
+Six-section update: removes repeated text/CTA blocks and adds intentional dividers between uploaded image sections.
