@@ -1,5 +1,5 @@
 *{box-sizing:border-box}
-:root{--gold:#d4af37;--gold2:#f3d58e;--text:#f7f0e6}
+:root{--gold:#d4af37;--gold2:#f3d58e;--text:#f7f0e6;--muted:#d5c7b6}
 body{margin:0;background:#000;color:var(--text);font-family:Inter,sans-serif;overflow-x:hidden}
 img{display:block;width:100%;height:auto}
 .image-section{background:#000;margin:0;padding:0}
@@ -15,11 +15,38 @@ h2{font-family:Cinzel,serif;font-size:clamp(32px,6vw,60px)}
 .cards article{padding:24px;border:1px solid rgba(212,175,55,.2);border-radius:20px;background:rgba(255,255,255,.04)}
 .cards span{color:var(--gold2)}
 .cards p{line-height:1.7}
+.scripture-section{
+padding:82px 24px;
+text-align:center;
+background:radial-gradient(circle at center,rgba(212,175,55,.12),transparent 35%),#000;
+border-top:1px solid rgba(212,175,55,.14);
+border-bottom:1px solid rgba(212,175,55,.14);
+}
+.scripture{
+max-width:900px;
+margin:0 auto;
+font-family:Cinzel,serif;
+font-size:clamp(24px,4.5vw,44px);
+line-height:1.35;
+color:var(--gold2);
+}
+.reference{
+margin-top:24px;
+font-size:18px;
+color:var(--muted);
+letter-spacing:.08em;
+}
 .contact{padding:96px 22px;text-align:center;background:#030303}
+.contact-copy{max-width:760px;margin:18px auto;color:var(--muted);font-size:18px;line-height:1.7}
 .cta-row{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:28px}
 .button{display:inline-flex;align-items:center;justify-content:center;padding:13px 24px;border-radius:999px;text-decoration:none;font-weight:900}
 .gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#100b04}
 .outline{border:1px solid rgba(212,175,55,.7);color:var(--gold2)}
-.contact-grid{max-width:1000px;margin:42px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.contact-grid div{padding:20px;border-radius:18px;background:rgba(255,255,255,.04)}
-@media(max-width:800px){.cards,.contact-grid{grid-template-columns:1fr}.section-divider{height:58px}}
+.contact-grid{max-width:850px;margin:42px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.contact-grid div{padding:20px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.16)}
+.contact-grid strong{color:var(--gold2)}
+@media(max-width:800px){
+.cards,.contact-grid{grid-template-columns:1fr}
+.section-divider{height:58px}
+.scripture-section{padding:62px 20px}
+}
