@@ -1,1 +1,1 @@
-Added Jeremiah 1:5 section before final contact. Removed Cash App and public intake button from contact flow.
+Full site update: added small soul quote after hero and updated Facebook/Messenger link.
